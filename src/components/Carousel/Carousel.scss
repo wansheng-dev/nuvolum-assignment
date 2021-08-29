@@ -1,0 +1,132 @@
+$light: #f0f0f0;
+$dark: #aaaaaa;
+
+.carousel {
+  height: 540px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+
+  .left-arrow,
+  .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0.8, 1.2);
+    font-size: 2.5rem;
+    color: $dark;
+    z-index: 1;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .left-arrow {
+    left:10px;
+  }
+
+  .right-arrow {
+    right: 10px;
+  }
+
+  .left-arrow:hover,
+  .right-arrow:hover {
+  color: $light;
+  transition: .3s;
+  }
+
+  .slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity ease-in-out 0.3s;
+  }
+  
+  .slide.active {
+  opacity: 1;
+  transition-duration: .8s;
+  }
+
+  .slider-dots {
+    position: relative;
+    align-self: flex-end;
+    margin-bottom: 1%;
+    display: flex;
+    z-index: 1;
+  }
+  
+  .dot {
+    width: 40px;
+    height: 4px;
+    margin: 10px 5px;
+    border: none;
+    background: $dark;;
+  }
+  
+  .dot.active {
+    background: $light;
+  }
+
+  .dot:hover {
+    background: $light;
+    transition: .3s;
+  }
+}
+
+.modal {
+  .modal, .modal-overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+  }
+
+  .modal-overlay {
+    background: rgba(49,49,49,0.6);
+    z-index: 2;
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $light;
+    padding: 2%;
+    z-index: 2;
+  }
+  
+  .active-modal {
+    overflow-y: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    height: 300px;
+
+    .left-arrow {
+      left:0px;
+    }
+  
+    .right-arrow {
+      right: 0px;
+    }
+  }
+
+  .modal-content {
+    position: absolute;
+    width: 90%;
+    top: 80%;
+    left: 50%;
+    transform: translate(-20%, -50%);
+    background: $light;
+    padding: 2%;
+    z-index: 2;
+  }
+}
